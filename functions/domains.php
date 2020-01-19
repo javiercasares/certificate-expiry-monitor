@@ -59,7 +59,7 @@ function validate_domains($domains) {
   if (is_array($errors) && count($errors) == 0) {
     foreach ($domains as $key => $value) {
       $raw_chain = get_raw_chain(trim($value));
-      if ($raw_chain['error']) {
+      if (isset($raw_chain['error']) && $raw_chain['error']) {
         foreach ($raw_chain['error'] as $error_key => $error_value) {
           $errors[] = "\n - " . htmlspecialchars($error_value);
         }
