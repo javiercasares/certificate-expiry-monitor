@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-error_reporting(E_ALL & ~E_NOTICE);
+//error_reporting(E_ALL & ~E_NOTICE);
 foreach (glob("functions/*.php") as $filename) {
   require($filename);
 }
@@ -33,7 +33,7 @@ if ( isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['domains'
   }
 
   $domains = validate_domains($_POST['domains']);
-  if ( count($domains['errors']) >= 1 ) {
+  if (isset($domains['errors']) && count($domains['errors']) >= 1 ) {
     foreach ($domains['errors'] as $key => $value) {
       $errors[] = $value;
     }
